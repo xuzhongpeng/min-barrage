@@ -1,0 +1,38 @@
+div {
+  font-size: 40px;
+}
+body{
+  //background-color: #bbbbbb;
+}
+.myDan{
+  width:500px;
+  height: 500px;
+  margin:0 auto;
+  background-color: black;
+}
+// .move {
+//   position: relative;
+//   animation: mymove 5s 1;
+// }
+// @keyframes mymove {
+//   from {
+//     left: -200px;
+//   }
+//   to {
+//     left: 1000px;
+//   }
+// }
+
+// @function strip-units($number){
+// 	@return $number / ($number * 0 + 1);
+// }
+// @for $i from 1 through 20{
+//   .move-#{$i} {
+// 	position: relative;
+// 	left:-200px;
+// 	animation: mymove;
+// 	animation-duration:1s*0+$i;
+// 	animation-timing-function:linear;
+// 	animation-iteration-count:1;
+//   }
+// }
