@@ -6,7 +6,7 @@ export default class Barrage {
   close: boolean = false;
   speed: number = 10;
   color: string = '#ffff';
-  backColor: string = '#ccc';
+  backColor: string = 'rgba(204, 204, 204, 0.5)';
   height: string = '40px';
   fontSize: string = '20px';
   parentName:string='barrage';
@@ -22,7 +22,8 @@ export default class Barrage {
     }
     this.firstBegin();
   }
-  start(message: string) {
+  start(message: string,options:any={}) {
+    if(options['speed']) this.speed=options['speed'];
     if (message) {
       this.info.push(message);
     }
@@ -33,10 +34,12 @@ export default class Barrage {
   firstBegin() {
     let main = this.getElDom();
     main.setAttribute('style',`overflow:hidden`)
+    this.animatStyle()
     let mainChild = document.getElementById(this.parentName);
     if (!mainChild) {
       mainChild = document.createElement('div');
       mainChild.setAttribute('id', this.parentName);
+      mainChild.setAttribute('style',`position:absolute;width:100%;height:100%;`)
       main.appendChild(mainChild);
     }else{
       this.parentName+=1;
@@ -47,55 +50,61 @@ export default class Barrage {
     let mainChild = document.getElementById(this.parentName);
     let myDiv = document.createElement('div');
     let top = this.getElDom().clientWidth * Math.random();
+    const clientWidth = this.getElDom().clientWidth;
     const styles = `
         height: ${this.height};
-        background: ${this.backColor};
-        display: inline-block;
-        word-break:keep-all;
-        white-space:nowrap;
-        border-radius: 20px;
-        line-height: ${this.height};
-        padding: 0 20px;
+        background: ${this.backColor};        
+        line-height: ${this.height};        
         font-size: ${this.fontSize};
         color:${this.color};
-        position: relative;
-        left:-1000px;
-        top:${top+10}px;
-        animation: mymove;
-        animation-duration:${this.speed}s;
-        animation-timing-function:linear;
-        animation-iteration-count:1;
-        -moz-animation: mymove;
-        -moz-animation-duration:${this.speed}s;
-        -moz-animation-timing-function:linear;
-        -moz-animation-iteration-count:1;
-        -webkit-animation: mymove;
-        -webkit-animation-duration:${this.speed}s;
-        -webkit-animation-timing-function:linear;
-        -webkit-animation-iteration-count:1;
-        -o-animation: mymove;
-        -o-animation-duration:${this.speed}s;
-        -o-animation-timing-function:linear;
-        -o-animation-iteration-count:1;
+        
+        // left:-200px;
+        top:${top+10}px; 
+        transition:transform ${this.speed}s linear 0s;
+        transform:translateX(${clientWidth}px);
+        // animation: mymove;
+        // animation-duration:${this.speed}s;
+        // animation-timing-function:linear;
+        // animation-iteration-count:1;
+        // -moz-animation: mymove;
+        // -moz-animation-duration:${this.speed}s;
+        // -moz-animation-timing-function:linear;
+        // -moz-animation-iteration-count:1;
+        // -webkit-animation: mymove;
+        // -webkit-animation-duration:${this.speed}s;
+        // -webkit-animation-timing-function:linear;
+        // -webkit-animation-iteration-count:1;
+        // -o-animation: mymove;
+        // -o-animation-duration:${this.speed}s;
+        // -o-animation-timing-function:linear;
+        // -o-animation-iteration-count:1;
         `;
-    myDiv.setAttribute('style', styles);
+    
     // myDiv.setAttribute('class','move-'+this.speed)
-
+    let text=document.createTextNode(this.info.shift())
+    
+    myDiv.setAttribute('class','barrage')
+    myDiv.addEventListener('mouseover',()=>{
+      myDiv.setAttribute('class',myDiv.getAttribute('class')+' pause')
+    })
     mainChild.appendChild(myDiv);
-
-    myDiv.innerHTML = this.info.shift();
+    setTimeout(() => {
+      myDiv.appendChild(text)
+      myDiv.setAttribute('style', styles);
+    }, 1000);
+      
+    
 
     setTimeout(() => {
       mainChild.removeChild(myDiv);
-    }, this.speed * 1000);
-    this.animatStyle(myDiv.scrollWidth);
+    }, (this.speed+1) * 1000);
   }
-  animatStyle(width: number) {
+  animatStyle() {
     const clientWidth = this.getElDom().clientWidth;
     const animations = `
     @keyframes mymove {
       from {
-        left: -${width}px;
+        left: -200px;
       }
       to {
         left: ${clientWidth}px;
@@ -104,10 +113,13 @@ export default class Barrage {
     let style = document.createElement('style');
     style.innerHTML = animations;
     document.querySelector('head').appendChild(style);
-    setTimeout(() => {
-      document.querySelector('head').removeChild(style);
-    }, this.speed * 1000);
+    // setTimeout(() => {
+    //   document.querySelector('head').removeChild(style);
+    // }, this.speed * 1000);
   }
+  /**
+   * 获取插入的dom
+   */
   getElDom() {
     let dom = document.querySelector(this.el);
     if (!dom) {
@@ -115,7 +127,10 @@ export default class Barrage {
     }
     return dom;
   }
-
+  /**
+   * 获取右边的宽度
+   * @param element 
+   */
   getElementLeft(element: any) {
     var actualLeft = element.offsetLeft;
     var current = element.offsetParent;
