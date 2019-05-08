@@ -1,0 +1,82 @@
+ 
+ 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>dom Framework</title>
+    <script>
+      var dom = function(s){
+        return document.getElementById(s)
+      }
+
+      dom.cssName = function (name){
+        var prefixes = ['', '-ms-','-moz-', '-webkit-', '-khtml-', '-o-'],
+        rcap = /-([a-z])/g,capfn = function($0,$1){
+          return $1.toUpperCase();
+        };
+        dom.cssName = function(name, target, test){
+          target = target || document.documentElement.style;
+          for (var i=0, l=prefixes.length; i < l; i++) {
+            test = (prefixes[i] + name).replace(rcap,capfn);
+            if(test in target){
+              return test;
+            }
+          }
+          return null;
+        }
+        return dom.cssName(name);
+      }
+      window.onload = function(){
+        var el = dom("test"),start,
+        css3transition = dom.cssName("transition");
+     
+        el.style[css3transition] = "all 5000ms ease-in"
+        
+        dom("pause").onclick = function(){
+          var computedStyle = document.defaultView.getComputedStyle( el, null );
+          el.style.width = computedStyle.getPropertyValue( "width" );
+          var elapsed = new Date - start;
+          var old = el.style[css3transition]
+          el.style[css3transition] = old.replace(/\d+ms/g,function(a){
+            return (parseFloat(a) - elapsed) +"ms"
+          })
+         //  el.style[css3transition] = "all 5000ms ease-in"
+        }
+        dom("resume").onclick = function(){
+          el.style.width = "400px";
+        }
+        setTimeout(function(){
+          start = new Date;
+          el.style.width = "400px";
+        },0);
+  
+        
+      }
+    </script>
+    <style>
+      #test{
+        background: red;
+        width:10px;
+        height:30px;
+      }
+      #parent{
+        width:400px;
+        height: 31px;
+        border: 1px solid blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>CSS3 动画 by 司徒正美</h3>
+    <div id="parent">
+      <div id="test">
+        TEXT
+      </div>
+    </div>
+    <button id="pause" type="button">中断</button>
+    <button id="resume" type="button">继续</button>
+  </body>
+</html>
+
+    

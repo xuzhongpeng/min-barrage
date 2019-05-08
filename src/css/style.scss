@@ -13,11 +13,16 @@ body {
   position: relative;
 }
 .barrage {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  flex-wrap: nowrap;
+  align-items: center;
   word-break: keep-all;
   white-space: nowrap;
   border-radius: 20px;
   padding: 0 20px;
+  padding-left:15px;
   transform: translateX(-300px);
   opacity: 0.8;
   will-change:transform;
@@ -26,6 +31,17 @@ body {
   pointer-events: auto;
   text-shadow: 0ch;
   z-index: 0;
+  .header{
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+    border:1px solid white;
+    margin-right: 5px;
+  }
+  .text{
+    text-decoration: none;
+    color: white;
+  }
 }
 .pause{
   animation-play-state: paused;
