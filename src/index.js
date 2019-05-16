@@ -1,4 +1,4 @@
-import Barrage from './js/barrage.ts'
+import Barrage from '../lib/bundle'
 import './css/style.scss'
 function component() {
     let barrage=new Barrage({

@@ -1,0 +1,63 @@
+.myDan {
+  width: 900px;
+  height: 900px;
+  background-color: black;
+  z-index: 1;
+  position: relative; }
+
+.barrage {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+     -moz-box-orient: horizontal;
+     -moz-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  cursor: pointer;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  word-break: keep-all;
+  white-space: nowrap;
+  -webkit-border-radius: 20px;
+          border-radius: 20px;
+  padding: 0 20px;
+  padding-left: 15px;
+  -webkit-transform: translateX(-300px);
+      -ms-transform: translateX(-300px);
+          transform: translateX(-300px);
+  opacity: 0.8;
+  will-change: transform;
+  position: absolute;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: auto;
+  text-shadow: 0ch;
+  z-index: 0; }
+  .barrage .header {
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    border: 1px solid white;
+    margin-right: 5px; }
+  .barrage .text {
+    text-decoration: none;
+    color: white; }
+
+.pause {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused; }
+

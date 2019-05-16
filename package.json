@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "弹幕插件",
   "private": true,
+  "main": "./lib/bundle.js",
   "scripts": {
-    "start": "webpack-dev-server  --hot"
+    "start": "webpack-dev-server  --hot",
+    "build": "mode=production webpack"
   },
   "author": "xuzhongpeng",
   "license": "MIT",

@@ -1,3 +1,4 @@
+import '../css/style.scss'
 export default class Barrage {
   private el: string = "body";
   private info: Array<any> = []; //显示文字

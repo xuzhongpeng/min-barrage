@@ -5,10 +5,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    app:path.resolve(__dirname,'src/index.js'),
+   // app:'./src/js/barrage.ts'
+  },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    //libraryTarget: "umd",
   },
   module: {
     rules: [
@@ -55,7 +59,7 @@ module.exports = {
     contentBase: './dist',
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    //new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
