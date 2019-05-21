@@ -1,6 +1,6 @@
 // import '../css/style.scss'
 export default class Barrage {
-  private el: string = "body";
+  private el: string = "";
   private info: Array<any> = []; //显示文字
   private defaultHeader: string = "";
   private url: string = "";
@@ -14,9 +14,13 @@ export default class Barrage {
   private mainDom: Element;
   private isLeft: boolean = false; //表示从左到右 false表示从右到左
   constructor(options: any) {
+    if(!options||options['el']===undefined){
+      throw new Error('el is necessary params')
+    }
     if (options) {
       for (const [option, value] of Object.entries(options)) {
         if (value !== "" && (this as any)[option] !== undefined) {
+          
           if (option !== "info") {
             (this as any)[option] = value;
           }
@@ -86,24 +90,34 @@ function createElementGo(options: any = {}) {
   let now = 0; //当前已过的时间
   let mainChild = document.getElementById(this.parentName);
   let myDiv = document.createElement("div");
-  let top = this.mainDom.clientWidth * Math.random();
+  let top = this.mainDom.clientHeight * Math.random();
   const clientWidth = this.mainDom.clientWidth; //获取容器宽度
+  let beginX=clientWidth
+  let overX=-300
+ 
+  if(this.isLeft===true){
+     beginX=-300
+     overX=clientWidth
+  }
+  const beginStyle=`
+    transform: translateX(-300px);
+  `
   const styles = `
       height: ${this.height};
       background: ${this.backColor};        
       line-height: ${this.height};        
       font-size: ${this.fontSize};
-      color:${this.color};        
-      // left:-200px;
+      color:${this.color};   
       top:${top + 10}px; 
       transition:transform ${speed}s linear 0s;
-      transform:translateX(${clientWidth}px);
+      transform:translateX(${overX}px);
       `;
 
   // myDiv.setAttribute('class','move-'+_speed)
   //let text=document.createTextNode(this.info.shift())
 
   myDiv.setAttribute("class", "barrage");
+  myDiv.style.transform='translateX('+beginX+'px)'
   myDiv.addEventListener("mouseover", handEvent);
   myDiv.addEventListener("mouseout", outEvent);
   mainChild.appendChild(myDiv);
@@ -143,7 +157,7 @@ function createElementGo(options: any = {}) {
   function outEvent(e: any) {
     const dom = e.currentTarget;
     dom.style.transition = `transform ${speed - now}s linear 0s`;
-    dom.style.transform = `translateX(${clientWidth}px)`;
+    dom.style.transform = `translateX(${overX}px)`;
     timeGo = setInterval(() => {
       now++;
     }, 1000);
