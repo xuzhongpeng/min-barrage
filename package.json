@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "弹幕插件",
   "private": true,
-  "main": "./lib/bundle.js",
+  "main": "./lib/barrage.js",
   "scripts": {
     "start": "webpack-dev-server  --hot",
-    "build": "mode=production webpack"
+    "build": "webpack --config webpack.config.pro.js"
   },
   "author": "xuzhongpeng",
   "license": "MIT",
