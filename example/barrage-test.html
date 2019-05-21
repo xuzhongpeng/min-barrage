@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>min-barrage test</title>
+    <link href='../lib/style.css' rel="stylesheet" />
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src='../lib/barrage.min.js'></script>
+<script>
+    window.onload = function () {
+        let barrage = new Barrage.default({
+            info: 'a',
+            speed: 10,
+            defaultHeader: 'static/1.jpeg'
+        });
+        let i = 1
+        barrage.start('我的大哥是拱格式发顺丰' + i++, 
+        { 
+            speed: 10, 
+            headImg: 'http://img1.imgtn.bdimg.com/it/u=1937445174,2133528823&fm=26&gp=0.jpg', 
+            url: 'http://www.baidu.com' 
+        });
+        //barrage.start('我的大哥是拱格式发顺丰' + i++, { speed: 10, url: 'http://www.baidu.com' });
+        //barrage.start();
+    }
+</script>

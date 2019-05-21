@@ -7,11 +7,11 @@ const devMode = process.env.NODE_ENV !== 'production';
 module.exports = {
   mode:'production',
   entry: {
-    //app:path.resolve(__dirname,'src/index.js'),
-    barrage:'./src/js/barrage.ts'
+    barrage:'./src/js/barrage.ts',
+    style:'./src/css/style.js'
   },
   output: {
-    filename: 'barrage.js',
+    filename: '[name].umd.js',
     path: path.resolve(__dirname, 'lib'),
     libraryTarget: "umd",
   },

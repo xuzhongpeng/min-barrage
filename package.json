@@ -6,7 +6,8 @@
   "main": "./lib/barrage.js",
   "scripts": {
     "start": "webpack-dev-server  --hot",
-    "build": "webpack --config webpack.config.pro.js"
+    "build": "webpack --config webpack.config.pro.js",
+    "build:cm":"webpack --config webpack.config.min.js"
   },
   "author": "xuzhongpeng",
   "license": "MIT",
