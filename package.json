@@ -1,16 +1,14 @@
 {
-  "name": "mini-barrage",
-  "version": "1.0.0",
-  "description": "弹幕插件",
-  "private": true,
-  "main": "./lib/barrage.js",
+  "name": "min-barrage",
+  "version": "0.0.3",
+  "description": "一款高性能的弹幕插件",
+  "private": false,
+  "main": "./lib/barrage.umd.js",
   "scripts": {
     "start": "webpack-dev-server  --hot",
     "build": "webpack --config webpack.config.pro.js",
     "build:cm":"webpack --config webpack.config.min.js"
   },
-  "author": "xuzhongpeng",
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
@@ -35,5 +33,19 @@
     "webpack-cli": "^3.3.1",
     "webpack-dev-server": "^3.3.1"
   },
-  "dependencies": {}
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuzhongpeng/min-barrage.git"
+  },
+  "keywords": [
+    "vuepress",
+    "plugin",
+    "gittalk"
+  ],
+  "author": "JSShou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xuzhongpeng/min-barrage/issues"
+  },
+  "homepage": "https://github.com/xuzhongpeng/min-barrage#readme"
 }

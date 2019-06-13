@@ -8,7 +8,15 @@
     <title>min-barrage test</title>
     <link href='../lib/style.css' rel="stylesheet" />
 </head>
-
+<style>
+html,body{
+    width:100%;
+    height: 100%;
+    margin:0;
+  background-color: black;
+  z-index: 1;
+  position: relative;
+}</style>
 <body>
 
 </body>
@@ -18,18 +26,17 @@
 <script>
     window.onload = function () {
         let barrage = new Barrage.default({
+            el:'body',
             info: 'a',
             speed: 10,
             defaultHeader: 'static/1.jpeg'
         });
         let i = 1
-        barrage.start('我的大哥是拱格式发顺丰' + i++, 
+        barrage.start('this is a test' + i++, 
         { 
             speed: 10, 
             headImg: 'http://img1.imgtn.bdimg.com/it/u=1937445174,2133528823&fm=26&gp=0.jpg', 
             url: 'http://www.baidu.com' 
         });
-        //barrage.start('我的大哥是拱格式发顺丰' + i++, { speed: 10, url: 'http://www.baidu.com' });
-        //barrage.start();
     }
 </script>
