@@ -1,15 +1,63 @@
 
 
-
-## 前言
-
+[查看官网示例](http//JSShou.cn/document/弹幕插件示例.html)
 
 
 ## 使用
 
-## 例子
+方式一：
+
+[下载](https://raw.githubusercontent.com/xuzhongpeng/min-barrage/master/example.zip)资源包，解压后引入barrage.min.js和style.css
+
+在js中初始化并使用
+```js
+// 初始化
+let barrage=new Barrage(
+  {
+    el:'body'
+  }
+);
+
+// 发送弹幕
+barrage.start('这是一个测试',
+  {
+    speed:10,
+    headImg:'static/1.jpeg'
+  }
+);
+```
+
+方式二：
+
+```
+# 下载min-barrage
+npm install min-barrage -D
+
+# 引入
+
+import Barrage from 'min-barrage'
+import 'min-barrage/lib/style.css'
+
+# 使用
+
+# 初始化
+let barrage=new Barrage(
+  {
+    el:'body'
+  }
+);
+
+# 发送弹幕
+barrage.start('这是一个测试',
+  {
+    speed:10,
+    headImg:'static/1.jpeg'
+  }
+);
+```
 
 ## API
+
 初始化传参
 
 属性 | 说明 | 类型 | 默认值 | 必填
