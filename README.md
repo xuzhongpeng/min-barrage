@@ -7,7 +7,7 @@
 
 方式一：
 
-[下载](https://raw.githubusercontent.com/xuzhongpeng/min-barrage/master/example.zip)资源包，解压后引入barrage.min.js和style.css
+[下载](https://github.com/xuzhongpeng/min-barrage/raw/master/example/barrage-example.zip)资源包，解压后引入barrage.min.js和style.css
 
 在js中初始化并使用
 ```js
