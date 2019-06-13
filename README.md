@@ -1,6 +1,6 @@
 
 
-[查看官网示例](http//JSShou.cn/document/弹幕插件示例.html)
+[查看官网示例](http://JSShou.cn/document/弹幕插件示例.html)
 
 
 ## 使用
