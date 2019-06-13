@@ -5,6 +5,9 @@ set -e
 
 
 # rm ./lib/style.umd.js
+webpack --config webpack.config.pro.js
+
+webpack --config webpack.config.min.js
 
 node changeVersion.js
 

@@ -29,7 +29,7 @@ export default class Barrage {
         }
       }
     }
-    firstBegin.apply(this);
+    this._getElDom();
   }
   start(message: string, options: any) {
     if (message) {
@@ -55,29 +55,7 @@ export default class Barrage {
     this.mainDom = dom;
   }
 }
-/******************** 私有函数 ***********************/
-/**
- * 初始化页面结构
- */
-function firstBegin() {
-  this._getElDom();
-  let main = this.mainDom;
-  main.setAttribute("style", `overflow:hidden`);
-  //this.animatStyle()
-  let mainChild = document.getElementById(this.parentName);
-  if (!mainChild) {
-    mainChild = document.createElement("div");
-    mainChild.setAttribute("id", this.parentName);
-    mainChild.setAttribute(
-      "style",
-      `position:absolute;width:100%;height:100%;`
-    );
-    main.appendChild(mainChild);
-  } else {
-    this.parentName += 1;
-    firstBegin.apply(this);
-  }
-}
+
 /**
  * 创建弹幕结构
  */
@@ -88,7 +66,7 @@ function createElementGo(options: any = {}) {
     speed = this.speed
   } = options;
   let now = 0; //当前已过的时间
-  let mainChild = document.getElementById(this.parentName);
+  let mainChild =this.mainDom;// document.getElementById(this.parentName);
   let myDiv = document.createElement("div");
   let top = this.mainDom.clientHeight * Math.random();
   const clientWidth = this.mainDom.clientWidth; //获取容器宽度
@@ -111,6 +89,8 @@ function createElementGo(options: any = {}) {
       top:${top + 10}px; 
       transition:transform ${speed}s linear 0s;
       transform:translateX(${overX}px);
+      position:absolute;
+      z-index:2000;
       `;
 
   // myDiv.setAttribute('class','move-'+_speed)

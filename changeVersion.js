@@ -20,6 +20,7 @@ for (let i = 1; i < v_list.length; i++) {
     a = i
   }else{
     v_list[i]=0
+    break
   }
 }
 try {

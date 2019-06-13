@@ -1,13 +1,13 @@
 {
   "name": "min-barrage",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "一款高性能的弹幕插件",
   "private": false,
   "main": "./lib/barrage.umd.js",
   "scripts": {
     "start": "webpack-dev-server  --hot",
     "build": "webpack --config webpack.config.pro.js",
-    "build:cm":"webpack --config webpack.config.min.js"
+    "build:cm": "webpack --config webpack.config.min.js"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -23,7 +23,7 @@
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.6.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
@@ -47,5 +47,6 @@
   "bugs": {
     "url": "https://github.com/xuzhongpeng/min-barrage/issues"
   },
-  "homepage": "https://github.com/xuzhongpeng/min-barrage#readme"
+  "homepage": "https://github.com/xuzhongpeng/min-barrage#readme",
+  "dependencies": {}
 }
