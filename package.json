@@ -38,9 +38,7 @@
     "url": "git+https://github.com/xuzhongpeng/min-barrage.git"
   },
   "keywords": [
-    "vuepress",
-    "plugin",
-    "gittalk"
+    "tools"
   ],
   "author": "JSShou",
   "license": "MIT",

@@ -20,9 +20,18 @@ export default class Barrage {
     if (options) {
       for (const [option, value] of Object.entries(options)) {
         if (value !== "" && (this as any)[option] !== undefined) {
-          
           if (option !== "info") {
             (this as any)[option] = value;
+          }
+          if(option==='speed'){
+            if(typeof(value)!=='number'){
+              try{
+               (this as any)[option]=parseInt(value as string)
+              }
+              catch(e){
+                throw new Error("speed is not number or string")
+              }
+            }
           }
         } else {
           //throw new Error("传入参数为空或错误");
@@ -68,7 +77,7 @@ function createElementGo(options: any = {}) {
   let now = 0; //当前已过的时间
   let mainChild =this.mainDom;// document.getElementById(this.parentName);
   let myDiv = document.createElement("div");
-  let top = this.mainDom.clientHeight * Math.random();
+  let top = (this.mainDom.clientHeight) * Math.random();
   const clientWidth = this.mainDom.clientWidth; //获取容器宽度
   let beginX=clientWidth
   let overX=-300
@@ -86,7 +95,7 @@ function createElementGo(options: any = {}) {
       line-height: ${this.height};        
       font-size: ${this.fontSize};
       color:${this.color};   
-      top:${top + 10}px; 
+      top:${top -50}px; 
       transition:transform ${speed}s linear 0s;
       transform:translateX(${overX}px);
       position:absolute;
