@@ -53,6 +53,13 @@ export default class Barrage {
     }
     this.mainDom = dom
   }
+/**
+ * 摧毁class
+ */
+  destroy() {
+    let mainChild = document.getElementById(this.parentName)
+    this.mainDom.removeChild(mainChild)
+  }
 }
 /******************** 私有函数 ***********************/
 /**
@@ -61,7 +68,7 @@ export default class Barrage {
 function firstBegin() {
   this._getElDom()
   let main = this.mainDom
-  main.style.position='relative'
+  main.style.position = 'relative'
   //this.animatStyle()
   let mainChild = document.getElementById(this.parentName)
   if (!mainChild) {
@@ -105,16 +112,23 @@ function createElementGo(options: any = {}) {
     throw new Error('height is ')
   }
   const clientWidth = this.mainDom.clientWidth //获取容器宽度
+  //创建dom
+  if (headImg) {
+    setHeader(myDiv, headImg)
+  }
+  myDiv.style.opacity='0'
+  myDiv.setAttribute('class', 'barrage')
+  // myDiv.style.display='flex'
+  setText(myDiv, this.info.shift(), url)
+  mainChild.appendChild(myDiv)
+  let domWidth=myDiv.clientWidth+10
   let beginX = clientWidth
-  let overX = -300
+  let overX = -domWidth
 
   if (this.isLeft === true) {
-    beginX = -300
+    beginX = -domWidth
     overX = clientWidth
   }
-  const beginStyle = `
-    transform: translateX(-300px);
-  `
   const styles = `
       height: ${this.height};
       background: ${this.backColor};        
@@ -124,22 +138,15 @@ function createElementGo(options: any = {}) {
       top:${top + 10}px; 
       transition:transform ${speed}s linear 0s;
       transform:translateX(${overX}px);
+      opacity:1;
       `
-
-  // myDiv.setAttribute('class','move-'+_speed)
-  //let text=document.createTextNode(this.info.shift())
-
-  myDiv.setAttribute('class', 'barrage')
   myDiv.style.transform = 'translateX(' + beginX + 'px)'
   myDiv.addEventListener('mouseover', handEvent)
   myDiv.addEventListener('mouseout', outEvent)
-  mainChild.appendChild(myDiv)
+  
   //加settimeout处理闪进的情况
   setTimeout(() => {
-    if (headImg) {
-      setHeader(myDiv, headImg)
-    }
-    setText(myDiv, this.info.shift(), url)
+    
     myDiv.setAttribute('style', styles)
   }, 1000)
 
