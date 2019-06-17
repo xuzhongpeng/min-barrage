@@ -121,7 +121,7 @@ function createElementGo(options: any = {}) {
   // myDiv.style.display='flex'
   setText(myDiv, this.info.shift(), url)
   mainChild.appendChild(myDiv)
-  let domWidth=myDiv.clientWidth+10
+  let domWidth=myDiv.clientWidth+50
   let beginX = clientWidth
   let overX = -domWidth
 
