@@ -1,6 +1,6 @@
 {
   "name": "min-barrage",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "一款高性能的弹幕插件",
   "private": false,
   "main": "./lib/barrage.umd.js",

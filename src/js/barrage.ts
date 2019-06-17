@@ -121,7 +121,7 @@ function createElementGo(options: any = {}) {
   // myDiv.style.display='flex'
   setText(myDiv, this.info.shift(), url)
   mainChild.appendChild(myDiv)
-  let domWidth=myDiv.clientWidth+50
+  let domWidth=myDiv.clientWidth+100
   let beginX = clientWidth
   let overX = -domWidth
 
@@ -183,7 +183,7 @@ function createElementGo(options: any = {}) {
     }, 1000)
     removeTimmer = setTimeout(() => {
       clearInterval(timeGo)
-      //mainChild.removeChild(myDiv);
+      mainChild.removeChild(myDiv);
     }, (speed - now + 1) * 1000)
     // const computedStyle = document.defaultView.getComputedStyle( dom, null );
     // console.log(computedStyle.getPropertyValue('transition-duration'))
