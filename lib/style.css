@@ -44,8 +44,7 @@
     border: 1px solid white;
     margin-right: 5px; }
   .barrage .text {
-    text-decoration: none;
-    color: white; }
+    text-decoration: none; }
 
 .pause {
   -webkit-animation-play-state: paused;

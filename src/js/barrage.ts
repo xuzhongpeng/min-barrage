@@ -119,7 +119,7 @@ function createElementGo(options: any = {}) {
   myDiv.style.opacity='0'
   myDiv.setAttribute('class', 'barrage')
   // myDiv.style.display='flex'
-  setText(myDiv, this.info.shift(), url)
+  setText.call(this,myDiv, this.info.shift(), url)
   mainChild.appendChild(myDiv)
   let domWidth=myDiv.clientWidth+100
   let beginX = clientWidth
@@ -209,6 +209,7 @@ function setHeader(mainDom: HTMLDivElement, src: string) {
 function setText(mainDom: HTMLDivElement, info: string, url: string) {
   let childDom = document.createElement('a')
   childDom.setAttribute('class', 'text')
+  childDom.style.color=this.color
   if (url) {
     childDom.setAttribute('href', url)
     childDom.setAttribute('target', '_blank')
