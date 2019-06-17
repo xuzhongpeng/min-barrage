@@ -61,7 +61,7 @@ export default class Barrage {
 function firstBegin() {
   this._getElDom()
   let main = this.mainDom
-  main.setAttribute('style', `overflow:hidden`)
+  main.style.position='relative'
   //this.animatStyle()
   let mainChild = document.getElementById(this.parentName)
   if (!mainChild) {
@@ -76,6 +76,7 @@ function firstBegin() {
       left:0;
       z-index:1000;
       pointer-events: none;
+      overflow:hidden;
       `
     )
     main.appendChild(mainChild)
